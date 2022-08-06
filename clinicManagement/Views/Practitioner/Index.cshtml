@@ -1,0 +1,52 @@
+﻿
+<div class="container-fluid">
+    
+    <form method="post" enctype="multipart/form-data" asp-controller="Practitioner" asp-action="Index">
+        <div class="row">
+            <div class="col-md-5">
+
+            </div>
+            <div class="col-md-3">
+                <label>From Date</label>
+                <input type="date" name="beginDate" value="dd-mm-yyyy">
+            </div>
+            <div class="col-md-4">
+                <label>To Date</label>
+                <input type="date" name="endDate" value="dd-mm-yyyy">
+                <input class="btn btn-primary btn-sm" type="submit" value="Submit"/>
+            </div>
+        </div>
+    </form>
+
+    <div class="row">
+        <div class="col-md-12">
+            @*<h3><strong>@TempData["Message"]</strong></h3>*@
+        </div>
+    </div>
+    <div class="row">
+         <div class="col-md-12">
+            <table class="table table-hover table-bordered results">
+                <thead>
+                <tr>
+                    <th>Id</th>
+                    <th class="col-md-5 col-xs-5">Practitioners Name</th>
+                    <th class="col-md-4 col-xs-4">Revenue</th>
+                    <th class="col-md-3 col-xs-3">Cost</th>
+                </tr>
+                </thead>
+                <tbody>
+                    
+                    @foreach (var item in ViewBag.summery)
+                    {
+                        <tr>
+                            <th scope="row">@item.Practitioners.id</th>
+                            <td><a href="@Url.Action("Appointments", "Practitioner", new { practitionersId = @item.Practitioners.id, startDate = "2020-01-16", endDate = "2020-02-17" })" target="_blank">@item.Practitioners.name</a></td>
+                            <td>@item.cost</td>
+                            <td>@item.revenue</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

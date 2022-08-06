@@ -1,0 +1,56 @@
+﻿
+@{
+    ViewBag.Title = "This is page title";
+}
+
+<div class="container-fluid">
+    <div>
+        <div class="col-md-12">
+            <h5 style="text-align: center;">Datewise Practitioners Activity Report</h5>
+        </div>
+        <div class="col-md-12">
+            <label>Practitioners ID: </label>
+            <label> @{ 
+                        @ViewBag.detail[0].Practitioners.id;
+                    } 
+            </label>
+        </div>
+        <div class="col-md-12">
+            <label>Practitioner Name: </label>
+            <label> @{ 
+                        @ViewBag.detail[0].Practitioners.name;
+                    } 
+            </label>
+        </div>
+    </div>
+    <div class="row">
+         <div class="col-md-12">
+            <table class="table table-hover table-bordered results">
+                <thead>
+                <tr>
+                    <th class="col-md-2 col-xs-4">Client Name</th>
+                    <th class="col-md-2 col-xs-3">App Type</th>
+                    <th class="col-md-2 col-xs-5">Duration</th>
+                    <th class="col-md-2 col-xs-3">Cost</th>
+                    <th class="col-md-2 col-xs-4">Revenue</th>
+                    <th class="col-md-2 col-xs-5">Date</th>
+                </tr>
+                </thead>
+                <tbody>
+                    
+                    @foreach (var item in ViewBag.detail)
+                    {
+                        <tr>
+                           <td>@item.client_name</td>
+                           <td>@item.appointment_type</td>
+                           <td>@item.duration</td>
+                           <td>@item.cost</td>
+                           <td>@item.revenue</td>
+                           <td>@item.date</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
